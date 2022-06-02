@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const error = require("../middlewares/errorHandler");
+const error = require("./errorHandler");
 const { json } = require("body-parser");
 
 module.exports.verifyToken = function (req, res, next) {
