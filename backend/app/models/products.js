@@ -23,6 +23,7 @@ const productSchema = new Schema({
   },
   active: {
     type: Boolean,
+    default: true,
   },
   deleteMessage: {
     type: String,

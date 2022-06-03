@@ -22,8 +22,24 @@ exports.createProduct = async (req, res, next) => {
 
 exports.listProduct = async (req, res, next) => {
   try {
-    const filter = { active: true };
+    let filter = { active: true };
+    if (req.query.search) {
+      filter = {
+        ...filter,
+        $or: [{ name: { $regex: req.query.search, $options: "i" } }, { code: { $regex: req.query.search, $options: "i" } }],
+      };
+    }
     const product = await service.find(productModel, filter);
+    return responseHandler(product, res);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.findByID = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const product = await service.findOne(productModel, { _id: id });
     return responseHandler(product, res);
   } catch (err) {
     next(err);
