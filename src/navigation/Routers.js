@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Login, Signup, Products, AddProducts, EditProducts } from "../pages";
+import { Login, Signup, Products, AddProducts, EditProducts, DeletedProducts } from "../pages";
 
 const Routers = (props) => {
   const { user } = props;
@@ -15,6 +15,7 @@ const Routers = (props) => {
             <Route path="/products" element={<Products />}></Route>
             <Route path="/addProducts" element={<AddProducts />}></Route>
             <Route path="/editProducts/*" element={<EditProducts />}></Route>
+            <Route path="/deletedProducts" element={<DeletedProducts />}></Route>
             <Route path="*" element={<Products />}></Route>
           </Routes>
         </Fragment>

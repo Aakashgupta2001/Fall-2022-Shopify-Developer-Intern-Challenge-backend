@@ -46,6 +46,9 @@ const Products = (props) => {
     };
     deleteProduct(params, token);
     setIsConfirmDelete(false);
+    setTimeout(() => {
+      getProductList(token, searchText);
+    }, 300);
   };
 
   return (

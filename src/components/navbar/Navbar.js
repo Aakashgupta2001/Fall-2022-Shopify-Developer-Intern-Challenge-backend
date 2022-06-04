@@ -27,7 +27,7 @@ const Navbar = (props) => {
               </span>
               <span
                 onClick={() => {
-                  navigate("/products");
+                  navigate("/deletedProducts");
                 }}
                 className="cursor-pointer text-lg border-2 hover:bg-gray-100  px-3 py-2 rounded-md font-medium"
               >

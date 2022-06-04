@@ -20,6 +20,10 @@ const types = {
   DELETE_PRODUCT_PENDING: "DELETE_PRODUCT_PENDING",
   DELETE_PRODUCT_FAILURE: "DELETE_PRODUCT_FAILURE",
   DELETE_PRODUCT_SUCCESS: "DELETE_PRODUCT_SUCCESS",
+
+  RESTORE_PRODUCT_PENDING: "RESTORE_PRODUCT_PENDING",
+  RESTORE_PRODUCT_FAILURE: "RESTORE_PRODUCT_FAILURE",
+  RESTORE_PRODUCT_SUCCESS: "RESTORE_PRODUCT_SUCCESS",
 };
 
 export const ProductActions = {
@@ -40,6 +44,24 @@ export const ProductActions = {
       });
     }
   },
+
+  getDeleteProductList: async (dispatch, token, searchvalue = "") => {
+    dispatch({ type: types.FETCH_PRODUCT_LIST_PENDING });
+    let data = await SiteAPI.apiGetCall(`/product/bin?search=${searchvalue}`, {}, token);
+    if (data.error) {
+      // alert(data.message);
+      dispatch({
+        type: types.FETCH_PRODUCT_LIST_FAILURE,
+        error: data.message,
+      });
+    } else {
+      dispatch({
+        type: types.FETCH_PRODUCT_LIST_SUCCESS,
+        productList: data.data,
+      });
+    }
+  },
+
   getProductById: async (dispatch, id, token) => {
     dispatch({ type: types.FETCH_PRODUCT_BY_ID_PENDING });
     let data = await SiteAPI.apiGetCall(`/product/${id}`, {}, token);
@@ -57,6 +79,24 @@ export const ProductActions = {
       });
     }
   },
+
+  restoreProducts: async (dispatch, id, token) => {
+    dispatch({ type: types.RESTORE_PRODUCT_PENDING });
+    let data = await SiteAPI.apiPutCall(`/product/bin/${id}`, {}, token);
+    if (data.error) {
+      // alert(data.message);
+      dispatch({
+        type: types.RESTORE_PRODUCT_FAILURE,
+        error: data.message,
+      });
+    } else {
+      dispatch({
+        type: types.RESTORE_PRODUCT_SUCCESS,
+        product: data.data,
+      });
+    }
+  },
+
   createProduct: async (dispatch, params, token) => {
     dispatch({ type: types.FETCH_CREATE_PRODUCT_PENDING });
     let data = await SiteAPI.apiPostCall("/product", params, token);

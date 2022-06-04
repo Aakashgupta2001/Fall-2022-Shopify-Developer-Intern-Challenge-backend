@@ -86,7 +86,13 @@ exports.delete = async (req, res, next) => {
 
 exports.listDeleted = async (req, res, next) => {
   try {
-    const filter = { active: false };
+    let filter = { active: false };
+    if (req.query.search) {
+      filter = {
+        ...filter,
+        $or: [{ name: { $regex: req.query.search, $options: "i" } }, { code: { $regex: req.query.search, $options: "i" } }],
+      };
+    }
     const product = await service.find(productModel, filter);
     return responseHandler(product, res);
   } catch (err) {
