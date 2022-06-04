@@ -15,6 +15,15 @@ mongo.connect(process.env.MONGO_CONNECT, (err) => {
 });
 
 //routes
+//frontend linking
+const path = __dirname + "/app/views/";
+console.log(path);
+app.use(express.static(path));
+app.get("/", function (req, res) {
+  res.sendFile(path + "index.html");
+});
+
+//backend routes
 require("./app/routes/routes").default(app);
 
 //starting server

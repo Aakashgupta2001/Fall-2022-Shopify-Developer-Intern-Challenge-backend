@@ -1,13 +1,13 @@
 import { Fragment } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import { Login, Signup, Products, AddProducts, EditProducts, DeletedProducts } from "../pages";
 
 const Routers = (props) => {
   const { user } = props;
   return (
-    <BrowserRouter>
+    <HashRouter>
       {user !== null ? (
         <Fragment>
           <Routes>
@@ -29,7 +29,7 @@ const Routers = (props) => {
           </Routes>
         </Fragment>
       )}
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

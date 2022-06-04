@@ -11,6 +11,7 @@ module.exports.default = (app) => {
   app.use(cookieParser());
 
   app.use("/api/v1/user", user);
+
   app.use("/api/v1/product", product);
 
   app.use(useErrorHandler);

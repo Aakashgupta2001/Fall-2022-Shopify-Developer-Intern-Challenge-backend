@@ -43,6 +43,7 @@ const DeletedProducts = (props) => {
                   <th>Code</th>
                   <th>Product Name</th>
                   <th>Description</th>
+                  <th>Deleted Message</th>
 
                   <th className="text-center">Restore</th>
                 </tr>
@@ -55,6 +56,7 @@ const DeletedProducts = (props) => {
                         <th scope="row">{item.code}</th>
                         <td>{item.name}</td>
                         <td>{item.description}</td>
+                        <td>{item.deleteMessage}</td>
                         <td className="text-center">
                           <span
                             className="cursor-pointer"

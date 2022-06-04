@@ -1,3 +1,3 @@
 export default {
-  apiBaseUrl: "http://localhost:5000/api/v1",
+  apiBaseUrl: "https://Fall-2022-Shopify-Developer-Intern-Challenge-backend.ag2001.repl.co/api/v1",
 };
