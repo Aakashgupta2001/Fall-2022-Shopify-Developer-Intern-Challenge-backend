@@ -57,7 +57,7 @@ const Login = (props) => {
       <div className="flex items-center justify-center h-screen bg-cover bg-loginBack font-Poppins">
         <div className="container mx-auto w-fit px-5 py-10 shadow-lg rounded-md bg-white bg-opacity-80">
           <h1 className="font-bold text-2xl leading-loose text-center">Login</h1>
-
+          <span className="fixed top-1 right-1 ">CREDENTIALS TO LOGIN :<br /> email - test@gmail.com <br /> Password: 1234@Abcd</span>
           <form className="leading-relaxed">
             <label htmlFor="email" className="block text-gray-700 text-md font-semibold mt-2 ">
               E-Mail
@@ -98,12 +98,13 @@ const Login = (props) => {
               login
             </button>
           </form>
-          {/* <span className="block mt-5 text-xs text-center">
+          
+          <span className="block mt-5 text-xs text-center">
             Dont't have an account yet?{" "}
             <span className="text-blue-200 cursor-pointer">
               <NavLink to="/signup">Create an account</NavLink>
             </span>
-          </span> */}
+          </span>
         </div>
       </div>
     </Fragment>
